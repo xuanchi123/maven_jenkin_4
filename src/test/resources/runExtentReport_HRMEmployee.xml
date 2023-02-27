@@ -17,4 +17,13 @@
       <class name="com.hrm.employee.Level19_Employee_01_Add_Employee"/>
     </classes>
   </test> 
+
+  <test name="Run on Firefox">
+	<parameter name="browser" value="firefox"/>
+	<parameter name="browserURL" value="https://opensource-demo.orangehrmlive.com"/>
+    <classes>
+      <class name="com.hrm.employee.Level19_Employee_01_Add_Employee"/>
+    </classes>
+  </test> 
+
 </suite> 
