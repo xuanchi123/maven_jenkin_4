@@ -1,0 +1,1 @@
+{"uuid":"fef89fe8-3fe7-44de-bff8-afa88f612802","name":"HRMEmployee","children":["673f3d0e-8912-4a4b-9555-9310893ff8b4"],"befores":[{"name":"deleteAllAllureReportFiles","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1677470286980,"stop":1677470287014}],"afters":[],"links":[],"start":1677470286949,"stop":1677470370131}

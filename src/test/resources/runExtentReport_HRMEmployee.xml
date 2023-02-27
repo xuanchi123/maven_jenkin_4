@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="HRMEmployee">
+	<listeners>
+		<listener class-name="commons.MethodListener" />
+		<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+		<!--       <listener class-name="reportConfig.ReportNGListener"/> -->
+		<!--        <listener class-name="reportConfig.ExtendReportV2Listener_No_ScreenShot"/> -->
+       <!-- <listener class-name="reportConfig.ExtentReportV5Listener"/> --> 
+     <listener class-name="reportConfig.AllureReportListener"/>-->   
+		
+	</listeners>
+  <test name="Run on FireFox">
+	<parameter name="browser" value="firefox"/>
+	<parameter name="browserURL" value="https://opensource-demo.orangehrmlive.com"/>
+    <classes>
+      <class name="com.hrm.employee.Level19_Employee_01_Add_Employee"/>
+    </classes>
+  </test> 
+</suite> 
