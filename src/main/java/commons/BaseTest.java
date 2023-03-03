@@ -2,6 +2,11 @@ package commons;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +15,8 @@ import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -50,39 +57,88 @@ public class BaseTest {
 	public WebDriver getDriver() {
 		return this.driver;
 	}
-	
-	protected WebDriver getBrowserDriver(String browserName, String browserURL) {
+
+	protected WebDriver getBrowserDriver(String browserName, String serverName) {
 		switch (browserName) {
-		case "firefox":
-			driver = WebDriverManager.firefoxdriver().create();
-			break;
-		case "firefoxheadless":
-			FirefoxOptions ffOption = new FirefoxOptions();
-			ffOption.addArguments("headless");
-			ffOption.addArguments("window-size=1920x1080");
-			driver = WebDriverManager.firefoxdriver().capabilities(ffOption).create();
-			break;
-		case "chrome":
-			driver = WebDriverManager.chromedriver().create();
-			break;
-		case "chromeheadless":
-			ChromeOptions chromeOption = new ChromeOptions();
-			chromeOption.addArguments("headless");
-			chromeOption.addArguments("window-size=1920x1080");
-			driver = WebDriverManager.chromedriver().capabilities(chromeOption).create();
-			break;
-		case "edge":
-			driver = WebDriverManager.edgedriver().create();
-			break;
-		default:
-			throw new RuntimeException("Invalid driver");
+			case "firefox":
+				driver = WebDriverManager.firefoxdriver().create();
+				break;
+			case "firefoxheadless":
+				FirefoxOptions ffOption = new FirefoxOptions();
+				ffOption.addArguments("headless");
+				ffOption.addArguments("window-size=1920x1080");
+				driver = WebDriverManager.firefoxdriver().capabilities(ffOption).create();
+				break;
+			case "chrome":
+				driver = WebDriverManager.chromedriver().create();
+				break;
+			case "chromeheadless":
+				ChromeOptions chromeOption = new ChromeOptions();
+				chromeOption.addArguments("headless");
+				chromeOption.addArguments("window-size=1920x1080");
+				driver = WebDriverManager.chromedriver().capabilities(chromeOption).create();
+				break;
+			case "edge":
+				driver = WebDriverManager.edgedriver().create();
+				break;
+			default:
+				throw new RuntimeException("Invalid driver");
 		}
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
-		driver.get(browserURL);
-		driver.manage().window().fullscreen();	
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get(getBrowserURL(serverName));
+		driver.manage().window().fullscreen();
 		return driver;
 	}
-	
+
+
+	protected WebDriver getBrowserDriverSauceLab(String browserName, String serverName, String envName, String osName) {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("browserName", browserName);
+		capabilities.setCapability("browserVersion", "latest");
+
+		capabilities.setCapability("platformName", osName);
+
+		Map<String, Object> sauceOptions = new HashMap<>();
+		if(osName.contains("Windows")){
+			sauceOptions.put("screenResolution", "1920x1080");
+		} else {
+			sauceOptions.put("screenResolution", "1920x1440");
+		}
+		sauceOptions.put("build", "selenium-build-5ZQ96");
+		capabilities.setCapability("sauce:options", sauceOptions);
+
+		try{
+			driver = new RemoteWebDriver(new URL(GlobalConstants.SAUCE_URL), capabilities);
+		} catch (MalformedURLException e){
+			e.printStackTrace();
+		}
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get(getBrowserURL(serverName));
+		driver.manage().window().fullscreen();
+		return driver;
+	}
+
+	String getBrowserURL(String serverName){
+		String envURL = null;
+		EnvironmentList environment = EnvironmentList.valueOf(serverName.toUpperCase());
+		switch (environment){
+			case DEV: envURL = "https://opensource-demo.orangehrmlive.com";
+				System.out.println("Get URL for environment " + environment.toString());
+				break;
+			case QA: envURL = "https://opensource-demo.orangehrmlive.com";
+				break;
+			case STAGING: envURL = "https://opensource-demo.orangehrmlive.com";
+				break;
+			case PRODUCTION: envURL = "https://opensource-demo.orangehrmlive.com";
+				break;
+			default:
+				System.out.println("Cannot get URL");
+				break;
+		}
+		return envURL;
+	}
+
 	private boolean checkTrue(boolean condition) {
 		boolean pass = true;
 		try {

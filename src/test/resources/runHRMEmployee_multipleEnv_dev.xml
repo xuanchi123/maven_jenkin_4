@@ -10,12 +10,11 @@
      <listener class-name="reportConfig.AllureReportListener"/>-->   
 		
 	</listeners>
-
+  <parameter name="environment" value="dev"/>
   <test name="Run on Firefox">
 	<parameter name="browser" value="firefox"/>
-	<parameter name="browserURL" value="https://opensource-demo.orangehrmlive.com"/>
     <classes>
-      <class name="employee.Level19_Employee_01_Add_Employee"/>
+      <class name="employee.Level20_Employee_01_Add_Employee_Multiple_Evn"/>
     </classes>
   </test> 
 

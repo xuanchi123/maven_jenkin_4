@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Run on Firefox"
+           tests="3"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="65.260">
+  <properties />
+  
+  
+            <testcase name="Employee_01_Add_Employee" time="9.413" classname="employee.Level19_Employee_01_Add_Employee" />
+                <testcase name="Employee_02_Upload_Avatar" time="39.675" classname="employee.Level19_Employee_01_Add_Employee" />
+                <testcase name="Employee_03_Edit_PersonalDetailPage" time="16.172" classname="employee.Level19_Employee_01_Add_Employee" />
+      
+</testsuite>

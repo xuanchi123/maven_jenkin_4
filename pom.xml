@@ -24,6 +24,7 @@
 		<jackson.version>2.9.4</jackson.version>
 		<webdrivermanager.version>5.0.2</webdrivermanager.version>
 		<aspectj.version>1.9.8</aspectj.version>
+		<environment>qa</environment>
 	</properties>
 
 	<!-- Quản lí thư viện -->
@@ -137,6 +138,11 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>${aspectj.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.aeonbits.owner</groupId>
+			<artifactId>owner</artifactId>
+			<version>1.0.10</version>
+		</dependency>
 	</dependencies>
 
 	<!-- Compiler/ Run Test -->
@@ -162,7 +168,7 @@
 				<configuration>
 					<!-- Run TestNG xml file -->
 					<suiteXmlFiles>
-						<file>src/test/resources/runExtentReport_HRMEmployee.xml</file>
+						<file>src/test/resources/runHRMEmployee_multipleEnv_${environment}.xml</file>
 					</suiteXmlFiles>
 
 					<!-- Argument -->

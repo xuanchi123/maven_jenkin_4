@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Run on Firefox"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="23.334">
+  <properties />
+  
+  
+            <testcase name="Employee_01_Add_Employee" time="23.334" classname="employee.Level21_Employee_01_Add_Employee_Multiple_SauceLab" />
+      
+</testsuite>

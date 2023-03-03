@@ -19,9 +19,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import PageUI.hrm.NavigatorAndCommonElementPageUI;
-import PageUI.hrm.PersonalDetailPageUI;
-import pageObject.hrm.employee.EmployeeListPO;
-import pageObject.hrm.employee.PageGeneratorManager;
+//import pageObject.hrm.employee.EmployeeListPO;
+//import pageObject.hrm.employee.PageGeneratorManager;
 
 public class BasePage {
 	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;

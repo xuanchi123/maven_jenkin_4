@@ -2,7 +2,6 @@ package pageObject.hrm.employee;
 
 import org.openqa.selenium.WebDriver;
 
-import PageUI.hrm.EmployeeListPageUI;
 import commons.BasePage;
 
 public class ContactDetailsPO extends BasePage {

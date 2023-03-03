@@ -1,36 +1,26 @@
 
 package employee;
 
-import org.testng.annotations.Test;
-
 import commons.BaseTest;
 import commons.GlobalConstants;
-import pageObject.hrm.employee.AddEmployeePO;
-import pageObject.hrm.employee.ContactDetailsPO;
-import pageObject.hrm.employee.DashboardPO;
-import pageObject.hrm.employee.EmployeeListPO;
-import pageObject.hrm.employee.LoginPO;
-import pageObject.hrm.employee.PageGeneratorManager;
-import pageObject.hrm.employee.PersonalDetailPO;
-import utilities.DataHelper;
-
-import org.testng.annotations.BeforeClass;
-
-import org.testng.annotations.Parameters;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+import pageObject.hrm.employee.*;
+import utilities.DataHelper;
 
-public class 	Level19_Employee_01_Add_Employee extends BaseTest{
+public class Level20_Employee_01_Add_Employee_Multiple_Evn extends BaseTest{
 
 //	private Object EmergencyContactsPage;
 
-	@Parameters({"browser", "browserURL"})
+	@Parameters({"browser", "environment"})
 	@BeforeClass
-	public void beforeClass(String browserName, String browserURL) {
-		log.info("Pre-Condition_01: Open Browser: '" + browserName + "' with URL '" + browserURL + "'");
-		driver = getBrowserDriver(browserName, browserURL);
+	public void beforeClass(String browserName, String env) {
+		log.info("Pre-Condition_01: Open Browser: '" + browserName + "' with env '" + env + "'");
+		driver = getBrowserDriver(browserName, env);
 		loginPage = PageGeneratorManager.getLoginPage(driver);
 		
 		String adminUser = "Admin";
@@ -64,10 +54,7 @@ public class 	Level19_Employee_01_Add_Employee extends BaseTest{
 		maritalStatus = "Married";
 		dataOfBirth = "1970-04-05";
 		bloodType = "B+";
-		
-//		street1 = dataHelper.getStreetAddress();
-//		street2 = dataHelper.getStreetAddress();
-		
+
 		street1 = "123 ABC Dr";
 		street2 = "456 DEf Dr";
 		

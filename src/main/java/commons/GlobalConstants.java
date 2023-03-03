@@ -27,4 +27,8 @@ public class GlobalConstants {
 	public static final String LIVE_GURU_PORTAL_URL = "http://live.techpanda.org/";
 	public static final String LIVE_GURU_ADMIN_URL = "http://live.techpanda.org/index.php/backendlogin/customer/";
 	public static final String JAVA_VERSION = System.getProperty("java.version");
+
+	public static final String SAUCE_USERNAME = "oauth-xuanchi123-6a1c1";
+	public static final String SAUCE_AUTOMATE_KEY =  "27af0657-d82a-40fb-97f2-3de0dbb6a236";
+	public static final String SAUCE_URL =  "https://" + SAUCE_USERNAME + ":" + SAUCE_AUTOMATE_KEY + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
 }
